@@ -38,23 +38,29 @@ class ApplicationController < ActionController::Base
 
   	tags.each do |tag|
   		tracks = @lastfm.tag.get_top_tracks(tag: tag, limit: tracks_limit)
-  		tracks.each do |track|
-  			t = tags_of_track(track["artist"]["name"], track["name"]).join(", ")
-  			t = t + ":" + track["name"]
-  			track_info[track["name"]] = {
-  				"artist" => track["artist"]["name"],
-  				"url" => track["url"],
-  				"name" => track["name"],
+  		tracks.each do |item|
+  			t = tags_of_track(item["artist"]["name"], item["name"]).join(", ")
+  			t = t + ":" + item["name"]
+  			track_info[item["name"]] = {
+  				"artist" => item["artist"]["name"],
+  				"url" => item["url"],
+  				"name" => item["name"],
   				#"image" => track["image"][0]["content"]
   			}
   			#track_info["image"] = track["image"][0]["content"]
 
-  			if defined? track["image"][0]["content"]
-  				track_info[track["name"]]["image"] = track["image"][0]["content"]
+  			if defined? item["image"][0]["content"]
+  				track_info[item["name"]]["image"] = item["image"][0]["content"]
   			else
-  				track_info[track["name"]]["image"] = "http://placehold.it/350x150"
+  				track_info[item["name"]]["image"] = "http://placehold.it/350x150"
   			end
-  			strings.push(t)
+  			#puts track + " - " + item["name"]
+  			if item["name"].downcase == track.downcase and item["artist"]["name"].downcase == artist.downcase
+  				puts "------Errrorrrrr-----------"
+  				next
+  			else
+  				strings.push(t)
+  			end
   			#lsi.add_item(t, :ex)
   		end
   	end
