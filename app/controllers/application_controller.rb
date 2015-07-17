@@ -67,7 +67,7 @@ class ApplicationController < ActionController::Base
   			if defined? item["image"][0]["content"]
   				track_info[item["name"]]["image"] = item["image"][0]["content"]
   			else
-  				track_info[item["name"]]["image"] = "http://placehold.it/75x75"
+  				track_info[item["name"]]["image"] = "http://placehold.it/34x34"
   			end
   			if item["name"].downcase == track.downcase and item["artist"]["name"].downcase == artist.downcase
   				next
