@@ -1,5 +1,4 @@
-== README
+== If you want fork it
 
-This projects aimed to create song recommendations.
 It uses Lastfm API, so it does not need any DB setup.
 Just copy and launch this project
