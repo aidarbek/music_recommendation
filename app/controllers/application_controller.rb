@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   def initialize()
   	# Creates Lastfm object
-  	api_key = "e148cf275908ee179642db16ab7ca7e3"
-  	api_secret = "d5d7dbb421eed3ae35423269452f2a0f"
+  	api_key = ""
+  	api_secret = ""
   	@lastfm = Lastfm.new(api_key, api_secret)
   end
   def tags_of_track(artist, track)
