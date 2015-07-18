@@ -16,12 +16,9 @@
 			 	$("#res").html("");
 			 	var track = $("#track").val().replace(/ /g, "+");
 			 	var artist = $("#artist").val().replace(/ /g, "+");
-			 	//alert(track + artist);
-			 	console.log("Loading");
-			 	$("#res").html('<div class="col-md-6 col-md-offset-3"><div class="progress"><div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><span class="sr-only">45% Complete</span></div></div> Загружаем треки. Это может занять несколько минут</div>');
+			 	$("#res").html('<div class="col-md-6 col-md-offset-3"><div class="progress"><div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><span class="sr-only">Loading</span></div></div> Loading tracks. It can take a few minutes...</div>');
 			 	$.getJSON("load?track="+track+"&artist="+artist, function(data){
-			 		console.log("Loaded");
-			 		$("#res").html("<div class='col-md-12'><h2>Вам может понравиться:</h2></div>");
+			 		$("#res").html("<div class='col-md-12'><h2>You may like:</h2></div>");
 			 		$.each( data, function( key, val ) {
 			 			str  = '<div class="col-md-4">';
 			 			str += '<div class="media">';
@@ -38,7 +35,7 @@
 						$("#res").append(str);
 					})
 			 	}).fail(function(){
-						$("#res").html("<h1>Извините, но трек с такими данными не найден :(</h1>");
+						$("#res").html("<h1>Sorry, but track with these data was not found :(</h1>");
 				});
 			 });
 		 });
@@ -48,28 +45,28 @@
 		<div class="container">
 			<div class="well">
 				<h1>
-					Получите рекомендации треков!
+					Get track recommendations!
 				</h1>
 				<p>
-					Просто заполните данные о вашем любимом треке и на их основе мы постараемся найти лучшие рекомендации
+					Just fill information about your favorite track and we will try to find best recommendations
 				</p>
 			</div>
 			<div class="well">
 				<div class="row">
 					<div class="col-md-12">
-						<h1>Ваш любимый трек</h1>
+						<h1>Your favorite track</h1>
 					</div>
 					<div class="col-md-5">
-						<input type="text" id="artist" placeholder="Исполнитель" class="form-control">
+						<input type="text" id="artist" placeholder="Artist" class="form-control">
 						<br>
 					</div>
 					<div class="col-md-5">
-						<input type="text" id="track" placeholder="Название трека" class="form-control">
+						<input type="text" id="track" placeholder="Name of the track" class="form-control">
 						<br>
 					</div>
 					<div class="col-md-2">
 						<button class="btn btn-danger" id="find">
-							Найти треки!
+							Find tracks!
 						</button>
 					</div>
 				</div>
